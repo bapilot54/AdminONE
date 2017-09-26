@@ -1,0 +1,194 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="AdminOne.master.vb" Inherits="AdminOne.AdminOne" %>
+
+<!DOCTYPE html>
+
+<html>
+
+<head runat="server">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AdminOne &copy Chris Mather 2017</title>
+
+    <link href="/Assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/Assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/Assets/custom/toastr/toastr.min.css" rel="stylesheet" />
+
+    <link href="/Assets/css/animate.css" rel="stylesheet">
+    <link href="/Assets/css/style.css" rel="stylesheet">
+    <link href="/Assets/custom/scrolltotop/style.css" rel="stylesheet" />
+
+    <!-- Mainly scripts -->
+    <script src="/Assets/js/jquery-2.1.1.js"></script>
+    <script src="/Assets/js/bootstrap.min.js"></script>
+    <script src="/Assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/Assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/Assets/custom/scrolltotop/jquery.scrollToTop.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/Assets/js/inspinia.js"></script>
+    <script src="/Assets/js/plugins/pace/pace.min.js"></script>
+    <script src="/Assets/custom/toastr/toastr.min.js"></script>
+    <script src="/Assets/custom/toastr/script.js"></script>
+
+
+    <%-- Scroll to top Code --%>
+    <script type="text/javascript">
+        $(function () {
+            $("#toTop").scrollToTop(1000);
+        });
+    </script>
+
+    <%-- Loading Image --%>
+<%--    <script type="text/javascript">
+        $(window).load(function () {
+            $("#pageloaddiv").fadeOut(2000);
+        });
+    </script>--%>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+
+<body class="fixed-sidebar " runat="server">
+
+    <%-- Loading Image --%>
+<%--    <style type="text/css">
+        #pageloaddiv {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background: url('/Assets/img/Waiting1.gif') no-repeat center center;
+        }
+    </style>--%>
+
+<%--    <div id="pageloaddiv"></div>--%>
+
+    <a href="#top" id="toTop"></a>
+
+    <form id="main" runat="server">
+
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <div id="wrapper">
+
+            <nav class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav metismenu" id="side-menu">
+                        <li class="nav-header">
+                            <div class="dropdown profile-element">
+                                <span>
+                                    <img alt="image" class="img-circle" src="/Assets/img/User.png" />
+                                </span>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <span class="clear"><span class="block m-t-xs"><strong class="font-bold"><%= _FullName  %></strong>
+                                    </span><span class="text-muted text-xs block"><%= _ReportingDivision %><b class="caret"></b></span></span></a>
+                                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                    <li><a href="#">Change Password</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/Login/Login.aspx?Logout=1">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <%-- Menu Items --%>
+                        <li>
+                            <a href="/Default.aspx"><i class="fa fa-th-large"></i><span class="nav-label">Dashboard</span></a>
+                        </li>
+
+                        <%-- FORUM --%>
+                        <li>
+                            <a href="#"><i class="fa fa-th-large"></i><span class="nav-label">Forum</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li><a href="/Forum/Installations.aspx">Installations</a></li>
+                            </ul>
+                        </li>
+
+                        <%-- Medical --%>
+                        <li>
+                            <a href="#"><i class="fa fa-th-large"></i><span class="nav-label">Medical Division</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li><a href="/Medical/Quotations/Quotation.aspx">New Quotation</a></li>
+                                <li><a href="/Medical/Quotations/Quotation.aspx">View Quotation</a></li>
+                            </ul>
+                        </li>
+
+                        <%-- Administration --%>
+                        <li>
+                            <a href="#"><i class="fa fa-th-large"></i><span class="nav-label">Administration</span> <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level collapse">
+                                <li><a href="/Administration/Site/AdminControl.aspx">Site Administration</a></li>
+                                <li><a href="/Administration/Medical/AdminControl.aspx">Medical Administration</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </nav>
+
+            <div id="page-wrapper" class="gray-bg">
+                <div class="row border-bottom">
+                    <nav class="navbar navbar-static-top " role="navigation" style="margin-bottom: 0">
+
+                        <div class="navbar-header">
+                            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li>
+                                <a href="/Login/Login.aspx?Logout=1"><i class="fa fa-sign-out"></i>Log out</a>
+                            </li>
+                        </ul>
+
+                    </nav>
+                </div>
+                <div class="row wrapper border-bottom white-bg page-heading">
+
+                    <%-- Breadcrumbs --%>
+                    <div class="col-sm-6">
+                        <h2><%= SiteMap.CurrentNode.Description %></h2>
+                        <ol class="breadcrumb">
+                            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" />
+                            <asp:SiteMapPath ID="SiteMapPath1" runat="server" RenderCurrentNodeAsLink="false" PathSeparator=" / ">
+                            </asp:SiteMapPath>
+                        </ol>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="title-action">
+
+                            <%-- Breadcrumb Action Area --%>
+                            <asp:ContentPlaceHolder ID="BreadrumbActionArea" runat="server">
+                            </asp:ContentPlaceHolder>
+
+                        </div>
+                    </div>
+                </div>
+
+                <%-- Content --%>
+                <div class="wrapper wrapper-content">
+
+                    <asp:ContentPlaceHolder ID="body" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </div>
+
+                <div class="footer">
+                    <div>
+                        <strong>AdminOne -</strong> Chris Mather &copy; 2017             
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB8874_adminone" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=168.1.80.139,25000;Initial Catalog=DB8874_adminone;Persist Security Info=True;User ID=DB8874_adminone_admin" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB8874_adminoneConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.aspnet_Users" Member="aspnet_Users">
+    <Type Name="aspnet_User">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_AdditionalUserDetail" Member="AdditionalUserDetail" ThisKey="UserId" OtherKey="UserID" Type="AdditionalUserDetail" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="DB8874_adminone_admin.AdditionalUserDetails" Member="AdditionalUserDetails">
+    <Type Name="AdditionalUserDetail">
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ReportingDivision" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ForceChangePassword" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="aspnet_User_AdditionalUserDetail" Member="aspnet_User" ThisKey="UserID" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="DB8874_adminone_admin.ForumInstallationDetails" Member="ForumInstallationDetails">
+    <Type Name="ForumInstallationDetail">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstallationID" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="PercentageComplete" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="UpdatedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorAddress" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorAddressCont" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorPostCode" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="VendorState" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="VendorCountry" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="VendorContactName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorContactNumber" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="VendorContactEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ZeissSalesPerson" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ZeissEngineer" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="ForumInstallationDetail_ForumSiteSurvey" Member="ForumSiteSurveys" ThisKey="InstallationID" OtherKey="InstallationID" Type="ForumSiteSurvey" />
+      <Association Name="ForumInstallationDetail_ForumStage" Member="ForumStages" ThisKey="InstallationID" OtherKey="InstallationID" Type="ForumStage" />
+    </Type>
+  </Table>
+  <Table Name="DB8874_adminone_admin.ForumSiteSurvey" Member="ForumSiteSurveys">
+    <Type Name="ForumSiteSurvey">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstallationID" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="UpdatedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ArchiveAndViewer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GlaucomaWorkplaceMain" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RetinaWorkplaceMain" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FORUMUserLicences" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GlaucomaWorkplaceUserLicences" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RetinaWorkplaceUserLicences" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ZeissDeviceConnections" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThirdPartyDeviceConnections" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EMRRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EMRVendor" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="DataCleanseRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RequestsAndNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ZeissProvidedServer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ZeissServerStorageRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ZeissServerMonitorRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CustomerProvidedServer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CustomerServerIsDedicated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CustomerServerMeetsSpecifications" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="ForumInstallationDetail_ForumSiteSurvey" Member="ForumInstallationDetail" ThisKey="InstallationID" OtherKey="InstallationID" Type="ForumInstallationDetail" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="DB8874_adminone_admin.ForumStages" Member="ForumStages">
+    <Type Name="ForumStage">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InstallationID" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="StageDescription" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="MainButtonText" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="StepNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StepStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="UpdatedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CompletedBy" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="CompletedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AssignedTo" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="ForumInstallationDetail_ForumStage" Member="ForumInstallationDetail" ThisKey="InstallationID" OtherKey="InstallationID" Type="ForumInstallationDetail" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="DB8874_adminone_admin.ForumSurveyProductAllocations" Member="ForumSurveyProductAllocations">
+    <Type Name="ForumSurveyProductAllocation">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SiteSurveyDescription" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ProductRowID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Med_Product_ForumSurveyProductAllocation" Member="Med_Product" ThisKey="ProductRowID" OtherKey="ID" Type="Med_Product" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="DB8874_adminone_admin.Med_Products" Member="Med_Products">
+    <Type Name="Med_Product">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductDescription" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ProductSubDescription" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="ProductGroup" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PriceAUD" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PriceNZD" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="InternalNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="VendorViewableNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PackageItemOnly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Med_Product_ForumSurveyProductAllocation" Member="ForumSurveyProductAllocations" ThisKey="ID" OtherKey="ProductRowID" Type="ForumSurveyProductAllocation" />
+    </Type>
+  </Table>
+  <Table Name="DB8874_adminone_admin.Med_QuotationDetails" Member="Med_QuotationDetails">
+    <Type Name="Med_QuotationDetail">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QuotationID" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="CreatedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="UpdatedDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorAddress" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorAddressCont" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorPostCode" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="VendorState" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="VendorCountry" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="VendorContactName" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="VendorContactNumber" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="VendorContactEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ZeissSalesPerson" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Currency" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="InternalNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExternalNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Med_QuotationDetail_Med_QuotationProduct" Member="Med_QuotationProducts" ThisKey="ID" OtherKey="QuotationDetailsRowID" Type="Med_QuotationProduct" />
+    </Type>
+  </Table>
+  <Table Name="DB8874_adminone_admin.Med_QuotationProducts" Member="Med_QuotationProducts">
+    <Type Name="Med_QuotationProduct">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QuotationDetailsRowID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="QuotationID" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ProductDescription" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ProductSubDescription" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="ProductGroup" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PriceAUD" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PriceNZD" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Med_QuotationDetail_Med_QuotationProduct" Member="Med_QuotationDetail" ThisKey="QuotationDetailsRowID" OtherKey="ID" Type="Med_QuotationDetail" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

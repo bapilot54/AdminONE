@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+
+  <siteMapNode url="/Default.aspx" title="Dashboard"  description="My Dashboard">
+
+    <!--Forum-->
+    <siteMapNode url="/Forum/Installations.aspx" title="Installations"  description="FORUM Installations" />
+    <siteMapNode url="/Forum/NewEditInstallation.aspx" title="Installation Main Details"  description="Create / Edit a FORUM Installation" />
+    <siteMapNode url="/Forum/TimeLine.aspx" title="FORUM TimeLine"  description="FORUM TimeLine Manager" />
+
+    <!--Medical-->
+    <siteMapNode url="/Medical/Quotations/Quotation.aspx" title="Medical Quotation"  description="Medical Quotation" />
+    <siteMapNode url="/Medical/Quotations/Checkout.aspx" title="Medical Quotation Checkout"  description="Medical Quotation Checkout" />
+
+
+    <!--Administration-->
+    <!--Medical-->
+    <siteMapNode url="/Administration/Medical/AdminControl.aspx" title="Medical Administration"  description="Medical Administration Control" />
+    <siteMapNode url="/Administration/Medical/Products/ProductGroups.aspx" title="Medical Product Groups"  description="Medical Product Groups" />
+    <siteMapNode url="/Administration/Medical/Products/ProductAdministration.aspx" title="Medical Product Administration"  description="Medical Product Administration" />
+    <!--Forum-->
+    <siteMapNode url="/Administration/Medical/Forum/ForumSiteSurveyProductLinks.aspx" title="FORUM Product Links"  description="FORUM Site Survey Product Link Administration" />
+    <!--Site-->
+    <siteMapNode url="/Administration/Site/AdminControl.aspx" title="Site Administration"  description="Site Administration Control" />
+    <!--Users-->
+    <siteMapNode url="/Administration/Site/UserAccounts/CreateEditUserAccounts.aspx" title="User Account Administration"  description="Create / Edit User Accounts" />
+
+
+  </siteMapNode>
+
+</siteMap>
